@@ -5,7 +5,8 @@ window.onload = function() {
 
   var targetWordList = ["Williamsburg", "Tumblr", "gastropub", "mumblecore", "fashion", "brunch", "vinyl", "tousled", "dreamcatcher", "letterpress", "distillery", "keffiyeh", "banjo", "Kickstarter", "asymmetrical", "denim", "messenger", "fingerstache", "Schlitz", "readymade", "YOLO", "bitters", "aesthetic", "typewriter", "flexitarian", "selfies", "sustainable", "Bushwick", "mixtape", "artisan", "wayfarers", "normcore", "meggings", "salvia", "Pinterest", "skateboard", "Etsy", "hashtag", "retro", "iPhone", "sriracha", "forage", "polaroid", "organic", "locavore", "keytar", "plaid", "authentic", "mustache", "ennui", "quinoa", "umami", "biodiesel", "ugh", "disrupt", "meh", "Banksy", "Pitchfork", "Helvetica", "cliche", "sartorial", "irony", "squid", "actually", "Brooklyn", "gentrify", "Austin", "twee", "DIY", "semiotics", "kitsch", "bespoke", "pickled", "cred", "viral", "Portland", "heirloom", "freegan", "seitan", "hoodie", "whatever", "cardigan", "Thundercats", "PBR", "literally", "pug", "leggings", "scenester", "tofu", "beard", "paleo", "ethical", "chia", "tattooed", "Vice",];
 
-  var lettersGuessed
+  var lettersGuessed = ">";
+  var guessesRemaining = 8;
   var wins = 0;
   
 
@@ -15,7 +16,8 @@ window.onload = function() {
   var guessesRemainingHTM = document.getElementById("guessesRemaining");
   var winsHTM = document.getElementById("wins");
 
-  winsHTM.textContent = 0;
+  winsHTM.textContent = wins;
+  guessesRemainingHTM.textContent = guessesRemaining;
 
 
   // set random targetWord and array of letters from that word
@@ -80,6 +82,13 @@ window.onload = function() {
         }
         
 
+      }
+      else {
+        lettersGuessed += guess+", ";
+        console.log("Letters guessed list: "+lettersGuessed);
+        lettersGuessedHTM.append(" "+guess+",");
+        guessesRemaining--;
+        guessesRemainingHTM.textContent = guessesRemaining;
       }
     }
 
